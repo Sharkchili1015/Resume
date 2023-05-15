@@ -2,16 +2,13 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import getEnvConfig from "./utils/config";
 import { useTranslation } from "react-i18next";
 
 function App() {
   const { t } = useTranslation();
-  const config = getEnvConfig();
-  console.log("🚀 ~ file: App.tsx:11 ~ App ~ config:", config)
   const [count, setCount] = useState(0);
 
-  const handleClick = (count) => {
+  const handleClick = (count) => { 
     setCount((count) => count + 1);
   };
 
