@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 function App() {
   const { t } = useTranslation();
   const [count, setCount] = useState(0);
-
+  document.documentElement.dataset.theme = "dark";
   const handleClick = () => {
     setCount((count) => count + 1);
   };
