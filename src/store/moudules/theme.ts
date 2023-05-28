@@ -6,7 +6,7 @@ export const themeSlice = createSlice({
   initialState: {
     // count: 1,
     // title: "redux toolkit pre",
-    theme:localStorage.getItem('__userTheme__') || 'light'
+    theme:false
   },
   // 这里的属性会自动的导出为actions，在组件中可以直接通过dispatch进行触发
   reducers: {
@@ -17,9 +17,11 @@ export const themeSlice = createSlice({
     // decrement(state) {
     //   state.count -= 1;
     // },
-    changeTheme(state) {
-        state.theme = state.theme === 'light' ? 'dark' : 'light'
-        localStorage.setItem('__userTheme__', state.theme)
+    changeTheme(state, { payload }) {
+        debugger;
+        state.theme = payload
+        document.documentElement.dataset.theme = state.theme ? "dark" : "light";
+        localStorage.setItem('__userTheme__', JSON.stringify(state.theme))
     }
   },
 });
