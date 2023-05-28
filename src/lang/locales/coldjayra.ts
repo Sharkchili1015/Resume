@@ -1,6 +1,6 @@
 export default {
     userInfo:{
-        name:'樊富豪'
+        name:'练舒鑫'
     }
 }
   
