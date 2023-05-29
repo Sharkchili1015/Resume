@@ -6,12 +6,16 @@ import "./common.scss"
 import "virtual:windi.css";
 import "./lang";
 import router from "./router/index";
+import { Provider } from 'react-redux';
 import { RouterProvider as Router } from 'react-router-dom'
+import store from './store';
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
-		<Router router={router}>
-			<App />
-		</Router>
+		<Provider store={store}>
+			<Router router={router}>
+				<App />
+			</Router>
+		</Provider>
 	</React.StrictMode>
 );

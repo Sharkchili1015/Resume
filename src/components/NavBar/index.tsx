@@ -1,7 +1,8 @@
-
-import * as Tabs from '@radix-ui/react-tabs';
 import { useNavigate } from 'react-router-dom';
 import  {routes} from "../../router/index"
+import ThemeSwitch from '../themeSwitch'
+import * as Tabs from '@radix-ui/react-tabs';
+
 function NavBar () {
     //创建导航hook
     const NavigateTo  = useNavigate()
@@ -10,19 +11,21 @@ function NavBar () {
         NavigateTo(value)
     }
     return (
-       <>
-            <Tabs.Root defaultValue='home' onValueChange={tabChange}>
-                <Tabs.List>
-                {
-                    routes.map((routeItem,index)=>{
+	<>
+		<Tabs.Root defaultValue='home' onValueChange={tabChange}>
+			<Tabs.List>
+				{
+                    routes.map((routeItem)=>{
                         return <Tabs.Trigger value={routeItem.path} key={routeItem.value}>
-                                {routeItem.name} 
+	{routeItem.name} 
                                 </Tabs.Trigger>
                     })
                 }
-                </Tabs.List>
-            </Tabs.Root>
-       </>
+			</Tabs.List>
+		</Tabs.Root>
+
+		<ThemeSwitch />
+	</>
     )
    }
    
