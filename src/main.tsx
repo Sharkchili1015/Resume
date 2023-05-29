@@ -5,12 +5,13 @@ import "./index.css";
 import "./common.scss"
 import "virtual:windi.css";
 import "./lang";
-import router from "./router/index"
+import router from "./router/index";
 import { RouterProvider as Router } from 'react-router-dom'
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
-    <Router router={router}>
-  		<App />
-    </Router>
+		<Router router={router}>
+			<App />
+		</Router>
 	</React.StrictMode>
 );
