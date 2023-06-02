@@ -24,7 +24,8 @@
     "react-router-dom": "^6.11.1",
     "react-router-redux": "^4.0.8",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "framer-motion": "6.5.1"
   },
   "devDependencies": {
     "@radix-ui/react-switch": "^1.0.3",

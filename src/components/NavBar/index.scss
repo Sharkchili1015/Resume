@@ -1,0 +1,29 @@
+.tabWrap {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 40px;
+  max-width: 200px;
+  padding: 5px;
+  box-shadow: 2.1px 4.9px 7.8px rgba(0, 0, 0, 0.081),
+    7.1px 16.3px 26.1px rgba(0, 0, 0, 0.119), 32px 73px 117px rgba(0, 0, 0, 0.2);
+  .tabItem {
+    position: relative;
+    margin: 3px;
+    padding: 2px 5px;
+    border-radius: 3px;
+  }
+}
+.tabSeleted {
+  background: #eee;
+}
+
+.underline {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #8855ff;
+}

@@ -1,33 +1,38 @@
-import { useNavigate } from "react-router-dom";
+
+import "./index.scss"
 import { routes } from "../../router/index";
-import ThemeSwitch from "../themeSwitch";
-import * as Tabs from "@radix-ui/react-tabs";
-
-function NavBar() {
-  //创建导航hook
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+function NavBar(props) {
+   //创建导航hook
   const NavigateTo = useNavigate();
-  // 切换tab的方法函数
-  const tabChange = (value: string) => {
-    NavigateTo(value);
-  };
-  return (
-	<>
-		<Tabs.Root defaultValue="home" onValueChange={tabChange}>
-			<Tabs.List>
-				{routes[0]["children"].map((routeItem) => {
-                    routeItem.path 
-            return routeItem.path && (
-	<Tabs.Trigger value={routeItem.path} key={routeItem.value}>
-		{routeItem.name}
-	</Tabs.Trigger>
-            );
-          })
-          }
-			</Tabs.List>
-		</Tabs.Root>
+  const [tabIndex,setTabIndex] = useState('home')
 
-		<ThemeSwitch />
-	</>
+  const clickTab = (tab) => {
+    setTabIndex(tab.path)
+    // eslint-disable-next-line react/prop-types
+    props.setData(tab.path)
+    NavigateTo(tab.path);
+  }
+
+
+  return (
+	<div className='tabWrap'>
+		{
+        routes[0]["children"].map((tab) => {
+          return tab.path && (
+	<div className={tabIndex == tab.path ? 'tabItem tabSeleted':"tabItem"}  key={tab.name} onClick={()=> clickTab(tab)}>
+		{tab.name}
+
+		{tab.path === tabIndex ? (
+			<motion.div className="underline" layoutId="underline" />
+              ) : null}
+	</div>
+          )
+        })
+      }
+	</div>
   );
 }
 

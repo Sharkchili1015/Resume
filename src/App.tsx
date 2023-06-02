@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import "./App.css";
+// import "./App.css";
 // import Home from "./views/Home/Home";
 // import { useTranslation } from "react-i18next";
 
