@@ -1,31 +1,31 @@
 
 import "./index.scss"
-import { routes } from "../../router/index";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-function NavBar(props) {
-   //创建导航hook
+import { useDispatch, useSelector } from "react-redux";
+import { updateActiveTab } from "../../store/moudules/tab"
+function NavBar() {
+  //创建导航hook
   const NavigateTo = useNavigate();
-  const [tabIndex,setTabIndex] = useState('home')
-
+  //获取reducer
+  const tabStore = useSelector((state) => {
+    return state.tab
+  })
+  const dispatch = useDispatch()
+  // 点击tab切换
   const clickTab = (tab) => {
-    setTabIndex(tab.path)
-    // eslint-disable-next-line react/prop-types
-    props.setData(tab.path)
+    dispatch(updateActiveTab(tab.path))
     NavigateTo(tab.path);
   }
-
-
   return (
 	<div className='tabWrap'>
 		{
-        routes[0]["children"].map((tab) => {
+        tabStore.tabList.map((tab) => {
           return tab.path && (
-	<div className={tabIndex == tab.path ? 'tabItem tabSeleted':"tabItem"}  key={tab.name} onClick={()=> clickTab(tab)}>
+	<div className={tabStore.activeTab == tab.path ? 'tabItem tabSeleted' : "tabItem"} key={tab.name} onClick={() => clickTab(tab)}>
 		{tab.name}
 
-		{tab.path === tabIndex ? (
+		{tab.path === tabStore.activeTab ? (
 			<motion.div className="underline" layoutId="underline" />
               ) : null}
 	</div>

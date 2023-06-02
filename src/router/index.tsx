@@ -15,13 +15,11 @@ export const routes = [
       {
         path: "home",
         name: "首页",
-        value: "home",
         element: <Home />,
       },
       {
         path: "about",
         name: "关于",
-        value: "about",
         element: <About />,
       },
     ],

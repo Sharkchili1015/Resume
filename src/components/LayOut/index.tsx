@@ -1,23 +1,23 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../NavBar/index";
-import { useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import "./styles.scss"
+import { useSelector } from "react-redux";
 const Layout = () => {
-	const [dataFromChild, setDataFromChild] = useState('');
-	const handleData = (data) => {
-		setDataFromChild(data);
-	}
+	//获取reducer
+	const {activeTab} = useSelector((state) => {
+		return state.tab
+	})
 	return (
 		<div className="conatiner">
 			<div className="nav" >
-				<NavBar setData={handleData} />
+				<NavBar  />
 			</div>
 
 			<div className="content">
 				<AnimatePresence exitBeforeEnter>
 					<motion.div
-						key={dataFromChild ? dataFromChild : "empty"}
+						key={activeTab ? activeTab : "empty"}
 						initial={{ y: 10, opacity: 0 }}
 						animate={{ y: 0, opacity: 1 }}
 						exit={{ y: -10, opacity: 0 }}
